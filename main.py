@@ -1,12 +1,19 @@
 from PIL import Image, ImageOps
-
-
 import os
+
 arr = os.listdir()
-print(arr)
+
+folder_exist = False
+for line in arr:
+    if line == "Square":
+        folder_exist = True
+        break
+
+if folder_exist == False:
+    os.makedirs("Square")
 
 for line in arr:
-    if line[len(line)-4:] == ".jpg":
+    if line[len(line)-4:] == (".jpg" or ".png"):
 
         # open image
         img = Image.open(line)
@@ -14,7 +21,6 @@ for line in arr:
         # border color
         color = "white"
 
-        # top, right, bottom, left
         x, y = img.size
 
         if x > y:
@@ -27,7 +33,7 @@ for line in arr:
             new_img = ImageOps.expand(new_img, border=border, fill=color)
 
         else:
-            # * portret
+            # * portret or square
             new_y = 1060
             new_x = int(x*new_y/y)
             size=(new_x,new_y)
