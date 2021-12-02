@@ -1,9 +1,9 @@
 from PIL import Image, ImageOps
 import os
 
-
-IMAGE_SIZE = 1080
+COLOR = "white"
 BORDER_SIZE = 20
+IMAGE_SIZE = 1080
 
 arr = os.listdir()
 
@@ -24,10 +24,6 @@ for line in arr:
         # open image
         print(f"{i}: Working with {line}")
         img = Image.open(line)
-
-        # border color
-        color = "white"
-
         x, y = img.size
 
         if x > y:
@@ -37,7 +33,7 @@ for line in arr:
             size=(new_x,new_y)
             new_img = img.resize(size)
             border = (BORDER_SIZE, int((IMAGE_SIZE-new_y)/2), BORDER_SIZE, int((IMAGE_SIZE-new_y)/2))
-            new_img = ImageOps.expand(new_img, border=border, fill=color)
+            new_img = ImageOps.expand(new_img, border=border, fill=COLOR)
 
         else:
             # * portret or square
@@ -46,7 +42,7 @@ for line in arr:
             size=(new_x,new_y)
             new_img = img.resize(size)
             border = (int((IMAGE_SIZE-new_x)/2), BORDER_SIZE, int((IMAGE_SIZE-new_x)/2), BORDER_SIZE)
-            new_img = ImageOps.expand(new_img, border=border, fill=color)
+            new_img = ImageOps.expand(new_img, border=border, fill=COLOR)
 
         size=(IMAGE_SIZE,IMAGE_SIZE)
         new_img = new_img.resize(size)
