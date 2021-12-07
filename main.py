@@ -5,20 +5,32 @@ COLOR = "white"
 BORDER_SIZE = 20
 IMAGE_SIZE = 1080
 
+# check existing two folders
 arr = os.listdir()
 
-folder_exist = False
+square_is_exist = False
+originals_is_exist = False
 for line in arr:
     if line == "Square":
-        folder_exist = True
+        square_is_exist = True
+    if line == "Originals":
+        originals_is_exist = True
+    if (square_is_exist == True) and (originals_is_exist == True):
         break
 
-if folder_exist == False:
+if square_is_exist == False:
     os.makedirs("Square")
 
-i = 0
+if originals_is_exist == False:
+    os.makedirs("Originals")
 
+# take all photos from Originals
+arr = os.listdir("./Originals")
+
+i = 0
 for line in arr:
+    line = "./Originals/" + line
+
     if line[len(line)-4:] == (".jpg" or ".png"):
         i += 1
         # open image
@@ -48,6 +60,5 @@ for line in arr:
         new_img = new_img.resize(size)
 
         # save new image
-        new_img.save("Square/"+line)
+        new_img.save("Square/"+line[12:]) # delete line path "./Originals"
         print(f"Done!")
-        print()
