@@ -20,9 +20,10 @@ for line in arr:
 
 if square_is_exist == False:
     os.makedirs("Square")
-
+    print("Folder Square don't exist. Created now")
 if originals_is_exist == False:
     os.makedirs("Originals")
+    print("Folder Originals don't exits. Created now")
 
 # take all photos from Originals
 arr = os.listdir("./Originals")
