@@ -31,8 +31,6 @@ arr = os.listdir("./Originals")
 i = 0
 for line in arr:
     line = "./Originals/" + line
-    print(line)
-    print(line[len(line)-4:])
     if (line[len(line)-4:] == ".jpg") or (line[len(line)-4:] == ".png"):
         i += 1
         # open image
