@@ -39,7 +39,7 @@ for line in images_arr:
     line = "./Originals/" + line
     i += 1
     # open image
-    print(f"{i}/{all_images}: Working with {line}")
+    print(f"{i}/{all_images}:\tWorking with  {line[12:]}")
     img = Image.open(line)
     x, y = img.size
 
@@ -67,4 +67,4 @@ for line in images_arr:
     # save new image
     new_img.save("Square/"+line[12:]) # delete line path "./Originals"
 
-print(f"Done!")
+print(f"\nAll done!\n")
