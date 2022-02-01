@@ -39,7 +39,7 @@ for line in images_arr:
     line = "./Originals/" + line
     i += 1
     # open image
-    print(f"{i}/{all_images}:\tWorking with  {line[12:]}")
+    print(f"{i}/{all_images}:\tWorking with file\t  {line[12:]}")
     img = Image.open(line)
     x, y = img.size
 
